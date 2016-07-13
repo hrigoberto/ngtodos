@@ -8,9 +8,22 @@
 
 </head>
 <body>
-  <div ng-controller='MainController'>
-    <input type="text" ng-model='message'>
-    {{message}}
+  <div class="container" ng-controller='MainController'>
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2"></div>
+        <div class="form-group">
+          <label>Description</label>
+          <input type="text" class="form-control">
+        </div>
+      <div class="col-md-8 col-md-offset-2">
+        <button class="btn btn-warning btn-block">Create</button>
+      </div>
+
+    </div>
+
+    <pre>
+      {{ todos | json }}
+    </pre>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular.js"></script>

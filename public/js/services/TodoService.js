@@ -17,14 +17,14 @@
     };
     return o;
 
-    function createTodo(desc){
-      var info = {
-        description: desc
+    function createTodo(desc){//informs createTodo that there is a description input coming in
+      var info = {//is the information being input to create the new todos
+        description: desc //the left value has to match the backend name for that value
       };
-      return $http.post(baseUrl + 'todos', info)
-                  .then(function(response){
-                    console.log('create', response);
-                    getAll();
+      return $http.post(baseUrl + 'todos', info) //tells http module to post to the baseurl/todos with the info that has been input
+                  .then(function(response){ //acts a prompt waiting for the promise from the server that then runs the function underneath
+                    console.log('create', response); //logs the word create so we can see the connection in the console
+                    getAll(); //acts a a synchronizer
                   });
     };
     function getAll(){
@@ -33,19 +33,19 @@
                     o.todos = response.data; //this says that the todos array in object will be made equal to the data in the response from the get
                   });
     };
-    function updateTodo(id, newTodo){
-      return $http.put(baseUrl + 'todos' + id, newTodo)
-                  .then(function(response){
+    function updateTodo(id, newTodo){//tells the update todo function to look for two things, the id and the newTodo
+      return $http.put(baseUrl + 'todos' + id, newTodo)//tells http to put the newTodo into the baseUrl/todos/id
+                  .then(function(response){//acts as a promise to start a function once the server responds
                     console.log('update', response);
                     getAll();
                   });
     };
-    function deleteTodo(id){
-      return $http.delete(baseUrl + 'todos/' + id)
-                  .then(function(response){
+    function deleteTodo(id){ //tells delete function to look out for the id input
+      return $http.delete(baseUrl + 'todos/' + id) //tells http to delete the baseUrl/todos/id object
+                  .then(function(response){ //listens for a promise fulfillment from the server
                     console.log('delete', response);
                     getAll(); //acts as a synchronizer
-                  })
+                  });
     };
   }
 })()
