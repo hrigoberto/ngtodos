@@ -20,10 +20,13 @@
       </div>
 
     </div>
+    <div class="row" ng-repeat='eachItem in todos'>
+      <div class="jumbotron" data-id="{{eachItem.id}}">
+        <h1>{{ eachItem.description }}</h1>
+        <p><strong>isComplete: </strong>{{ eachItem.isComplete }}</p>
+      </div>
+    </div>
 
-    <pre>
-      {{ todos | json }}
-    </pre>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular.js"></script>
