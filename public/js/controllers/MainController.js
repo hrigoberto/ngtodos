@@ -7,9 +7,10 @@
 //Tells angular to inject the scope, and TodoService modules into the MainController
   function MainController($scope, TodoService){ //the function MainController is using both the scope and TodoService modules
     $scope.todos = TodoService.todos;
+    $scope.create = createTodo;
     getTodos();
 
-    
+
 
 
     function getTodos(){
@@ -19,5 +20,15 @@
                    console.log($scope.todos);
                  })
     }
+
+    function createTodo(description){
+      TodoService.create(description)
+                 .then(function(){
+                   $scope.todos = TodoService.todos;
+                   $scope.description = '',
+                   getTodos();
+                 })
   }
+  }
+
 })();
