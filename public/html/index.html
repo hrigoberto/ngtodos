@@ -22,6 +22,7 @@
     </div>
     <div class="row" ng-repeat='eachItem in todos'>
       <div class="jumbotron" data-id="{{eachItem.id}}">
+        <button class="btn btnsmall btn-danger pull-right" ng-click='delete(eachItem.id)'>x</button>
         <h1>{{ eachItem.description }}</h1>
         <p><strong>isComplete: </strong>{{ eachItem.isComplete }}</p>
       </div>

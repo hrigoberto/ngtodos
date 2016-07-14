@@ -8,6 +8,7 @@
   function MainController($scope, TodoService){ //the function MainController is using both the scope and TodoService modules
     $scope.todos = TodoService.todos;
     $scope.create = createTodo;
+    $scope.delete = deleteTodo;
     getTodos();
 
 
@@ -18,7 +19,7 @@
                  .then(function(){
                    $scope.todos = TodoService.todos;
                    console.log($scope.todos);
-                 })
+                 });
     }
 
     function createTodo(description){
@@ -26,8 +27,16 @@
                  .then(function(){
                    $scope.description = '',
                    getTodos();
-                 })
+                 });
   }
+
+    function deleteTodo(id){
+      console.log(id);
+      TodoService.delete(id)
+                 .then(function(){
+                   getTodos();
+                 });
+    }
   }
 
 })();
