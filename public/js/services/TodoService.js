@@ -34,7 +34,7 @@
                   });
     };
     function updateTodo(id, newTodo){//tells the update todo function to look for two things, the id and the newTodo
-      return $http.put(baseUrl + 'todos' + id, newTodo)//tells http to put the newTodo into the baseUrl/todos/id
+      return $http.put(baseUrl + 'todos/' + id, newTodo)//tells http to put the newTodo into the baseUrl/todos/id
                   .then(function(response){//acts as a promise to start a function once the server responds
                     console.log('update', response);
                     getAll();

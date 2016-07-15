@@ -8,7 +8,7 @@
 
 </head>
 <body>
-  <div class="container" ng-controller='MainController'>
+  <div class="container" ng-controller='MainController'> <!--Tells the container to use the MainController as the angular controller -->
     <div class="row">
       <div class="col-md-8 col-md-offset-2"></div>
         <div class="form-group">
@@ -22,10 +22,20 @@
     </div>
     <div class="row" ng-repeat='eachItem in todos'>
       <div class="jumbotron" data-id="{{eachItem.id}}">
-        <button class="btn btnsmall btn-danger pull-right" ng-click='delete(eachItem.id)'>x</button>
-        <h1>{{ eachItem.description }}</h1>
+        <button class="btn btnsmall btn-danger pull-right" ng-click='delete(eachid)'>x</button>
+        <h1 ng-hide='eachItem.editing'>{{ eachItem.description }}</h1>
+        <div class="form-group" ng-show="eachItem.editing">
+          <input type="text" ng-model="eachItem.description" class="form-control">
+        </div>
         <p><strong>isComplete: </strong>{{ eachItem.isComplete }}</p>
+        <div ng-show="eachItem.editing">
+          <input type="radio" ng-value="true" ng-model="eachItem.isComplete"> True <br>
+          <input type="radio" ng-value="false" ng-model="eachItem.isComplete"> False <br>
+        </div>
+        <button ng-hide='eachItem.editing' class="btn btn-warning" ng-click="edit(eachItem)">Edit</button>
+        <button ng-show='eachItem.editing' class="btn btn-success" ng-click="update(eachItem)">Update</button>
       </div>
+
     </div>
 
   </div>
